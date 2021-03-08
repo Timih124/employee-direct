@@ -5,6 +5,7 @@ import Nav from "./Nav";
 import API from "../utils/API";
 import "../styles/DataArea.css";
 
+
 class DataArea extends React.Component { 
   // eslint-disable-next-line no-undef
   state = {
