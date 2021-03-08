@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+/* eslint-disable no-undef */
+import React from "react";
 import DataTable from "./DataTable";
 import Nav from "./Nav";
 import API from "../utils/API";
 import "../styles/DataArea.css";
 
-export default class DataArea extends Component {
+class DataArea extends React.Component { 
+  // eslint-disable-next-line no-undef
   state = {
     users: [{}],
     order: "descend",
@@ -19,7 +21,7 @@ export default class DataArea extends Component {
     { name: "DOB", width: "10%" }
   ]
 
-  handleSort = heading => {
+  handleSort = headings => {
     if (this.state.order === "descend") {
       this.setState({
         order: "ascend"
@@ -33,29 +35,29 @@ export default class DataArea extends Component {
     const compareFnc = (a, b) => {
       if (this.state.order === "ascend") {
         // account for missing values
-        if (a[heading] === undefined) {
+        if (a[headings] === undefined) {
           return 1;
-        } else if (b[heading] === undefined) {
+        } else if (b[headings] === undefined) {
           return -1;
         }
         // numerically
-        else if (heading === "name") {
-          return a[heading].first.localeCompare(b[heading].first);
+        else if (headings === "name") {
+          return a[headings].first.localeCompare(b[headings].first);
         } else {
-          return a[heading] - b[heading];
+          return a[headings] - b[headings];
         }
       } else {
         // account for missing values
-        if (a[heading] === undefined) {
+        if (a[headings] === undefined) {
           return 1;
-        } else if (b[heading] === undefined) {
+        } else if (b[headings] === undefined) {
           return -1;
         }
         // numerically
-        else if (heading === "name") {
-          return b[heading].first.localeCompare(a[heading].first);
+        else if (headings === "name") {
+          return b[headings].first.localeCompare(a[headings].first);
         } else {
-          return b[heading] - a[heading];
+          return b[headings] - a[headings];
         }
       }
 
@@ -101,3 +103,5 @@ export default class DataArea extends Component {
     );
   }
 }
+
+export default DataArea;
